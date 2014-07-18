@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+
+<html>
+	
+	<head>
+
+		<!--Tab Stuff-->
+
+			<title></title>
+			<link rel="icon" type="image/ico" href="assets/images/favicon.ico">
+
+		<!--Meta-->
+
+			<meta charset="UTF-8">
+
+			<!--TODO
+
+				Description
+				Keywords
+
+			-->
+
+			<meta name="description"   content="">
+			<meta name="author"        content="Kartikye Mittal">
+			<meta name="keyords"       content="">
+			<meta name="revisit-after" content="1 day">
+			<meta name="viewport"      content="width=device-width, initial-scale=1.0">
+
+		<!--Styles-->
+
+			<link rel="stylesheet" type="text/css" href="assets/styles/css/styles.css">
+
+		<!--Scripts-->
+
+			<script type="text/javascript" src="assets/scripts/libs/jquery/jquery.js"></script>
+			
+			<script type="text/javascript" src="assets/scripts/libs/bootstrap/bootstrap.min.js"></script>
+
+			<script type="text/javascript" src="assets/scripts/libs/bootstrap/switch.min.js"></script>
+
+			<script type="text/javascript" src="assets/scripts/libs/bootstrap/slider.js"></script>
+
+			<script type="text/javascript" src="assets/scripts/scripts.js"></script>
+
+	</head>
+
+	<body>
+
+		<header>
+			<h2>NAO Robot Controller</h2>
+			<div id="status">
+				<div class="container">
+					<div class="row">
+						<div id="status-left" class="col-sm-4">
+								<label id="iplabel">Robot IP: </label>
+								<input type="text" id="IPText"  />
+								<button type="button" id="setIP" class="btn btn-primary btn-xs">Set IP</button>
+						</div>
+						<div class="col-sm-4">	
+								<label id="vollabel">Volume: </label>
+								<input type="text" id="volume" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="50" data-slider-orientation="horizontal"/>
+
+						</div>
+						<div id="status-right" class="col-sm-4">	
+								<label id="stilabel">Stiffness: </label>
+								<button type="button" id="stiffOn" class="btn btn-success btn-xs "> On </button>
+								<button type="button" id="stiffOff" class="btn btn-danger btn-xs "> Off </button>
+						</div>
+					</div>
+				</div>		
+			</div>
+		</header>
+
+		<div class="container" id="ui">
+			
+			<div class="row" id="estopcontainer">
+				<div class="col-sm-8 col-sm-offset-2">
+					<button type="button" class="btn btn-danger btn-md form-control" id="emergencyStop">Emergency Stop</button>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-3 section">
+					<h2>Postures</h2>
+					<hr>
+					<button type="button" class="btn btn-info btn-md form-control" id="squat">Squat</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="standup">Stand Up</button>
+					<button type="button" class="btn btn-info btn-md form-control"
+					id="shake">Shake Head</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="clap">Clap</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="wave">Wave</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="lnod">Long Nod</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="snod">Short Nod</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="think">Think</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="askagain">Ask Again</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="cough">Cough</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="sneeze">Sneeze</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="sleep">Sleep</button>
+				</div>
+
+				<div class="col-sm-3 section">
+					<h2>Dances</h2>
+					<hr>
+					<button type="button" class="btn btn-info btn-md form-control" id="hakuna">Hakuna Matata</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="latino">Latino</button>
+					<button type="button" class="btn btn-info btn-md form-control"
+					id="jingle">Jingle Bell Rock</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="shortdance">Short Funny Dance</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="gangnam">Gangnam Style</button>
+					<button type="button" class="btn btn-info btn-md form-control"
+					id="itsmylife">It's My Life</button>
+					<button type="button" class="btn btn-info btn-md form-control"
+					id="letitgo">Let It Go</button>
+				</div>
+				
+				<div class="col-sm-3 section">
+					<h2>Emotions</h2>
+					<hr>
+					<button type="button" class="btn btn-info btn-md form-control" id="laugh">Laugh</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="happy">Happy</button>
+					<button type="button" class="btn btn-info btn-md form-control"
+					id="joyful">Joyful</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="surprise">Surprise</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="fearful">Fearful</button>
+					<button type="button" class="btn btn-info btn-md form-control"
+					id="sad">Sad</button>
+					<button type="button" class="btn btn-info btn-md form-control"
+					id="disgust">Disgust</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="amazement">Amazement</button>
+					<button type="button" class="btn btn-info btn-md form-control"
+					id="angry">Angry</button>
+					<button type="button" class="btn btn-info btn-md form-control"
+					id="angrysit">Angry Sit</button>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-3 section">
+					<h3>Simon Says</h3>
+					<hr>
+
+					<div class="panel-group" id="ssaccordian">
+						<div class="bg-primary panel panel-default">
+							<div class="panel-heading bg-primary">
+								<h4 class="panel-title" style="line-height: 20px !important">
+									<a data-toggle="collapse" data-parent="#ssaccordian" href="#collapseOne">
+										Instructions
+									</a>
+								</h4>
+							</div>
+							<div id="collapseOne" class="panel-collapse collapse">
+								<div class="panel-body">
+
+									<button type="button" 
+											class="btn btn-info btn-md form-control" 
+											id="ss1" 
+											data-toggle="tooltip" 
+											title="Now we're going to play Simon Says. It is a copying game.">
+										Instructions 1
+									</button>
+
+									<button type="button" 
+											class="btn btn-info btn-md form-control" 
+											id="ss2" 
+											data-toggle="tooltip" 
+											title=" In this game, I'm going to say 'Simon says follow by an action'. You only do the same action after I say Simon Says.">
+										Instructions 2
+									</button>
+
+									<button type="button" 
+											class="btn btn-info btn-md form-control" 
+											id="ss3" 
+											data-toggle="tooltip" 
+											title="For example, if I say 'Simon Says shake your head', then you have to shake your head. Like this.">
+										Instructions 3
+									</button>
+
+									<button type="button" 
+											class="btn btn-info btn-md form-control" 
+											id="ss4" 
+											data-toggle="tooltip" 
+											title="Lets try!">
+										Instructions 4
+									</button>
+
+									<button type="button" 
+											class="btn btn-info btn-md form-control" 
+											id="ss5" 
+											data-toggle="tooltip" 
+											title="Simon Says wave your hands">
+										Instructions 5
+									</button>
+
+									<button type="button" 
+											class="btn btn-success btn-md form-control" 
+											id="ss6a" 
+											data-toggle="tooltip" 
+											title="That's right!">
+										Instructions 6a
+									</button>
+
+									<button type="button" 
+											class="btn btn-danger btn-md form-control" 
+											id="ss6b" 
+											data-toggle="tooltip" 
+											title="No, when I say 'Simon says, wave your hands' You do this.">
+										Instructions 6b
+									</button>
+									<button type="button" 
+											class="btn btn-info btn-md form-control" 
+											id="ss7" 
+											data-toggle="tooltip" 
+											title="If I did not say 'Simon Says' before the action, then you must stay still. Do not move.">
+										Instructions 7
+									</button>
+
+									<button type="button" 
+											class="btn btn-info btn-md form-control" 
+											id="ss8" 
+											data-toggle="tooltip" 
+											title="Do you understand the game?">
+										Instructions 8
+									</button>
+
+									<button type="button" 
+											class="btn btn-info btn-md form-control" 
+											id="ss9" 
+											data-toggle="tooltip" 
+											title="Let's start!">
+										Instructions 9
+									</button>
+
+									<button type="button" 
+											class="btn btn-info btn-md form-control" 
+											id="ss10" 
+											data-toggle="tooltip" 
+											title="If I say 'clap your hands'. What do you do?">
+										Instructions 10
+									</button>
+
+									<button type="button" 
+											class="btn btn-danger btn-md form-control" 
+											id="ss11" 
+											data-toggle="tooltip" 
+											title="No, I did not say 'Simon says', so you should not move.">
+										Instructions 11
+									</button>
+
+									<button type="button" 
+											class="btn btn-info btn-md form-control" 
+											id="ss12" 
+											data-toggle="tooltip" 
+											title="Lets try another one. Ready?">
+										Instructions 12
+									</button>
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<button type="button" class="btn btn-info btn-md form-control" id="ssclap">Clap Your Hands</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="sswave">Wave Your Arms</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="ssshake">Shake Your Head</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="ssnod">Nod Your Head</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="ssstepleft">Step to Your Left</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="ssstepright">Step to Your Right</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="sssquat">Squat</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="ssturnleft">Turn to Your Left</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="ssturnright">Turn to Your Right</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="ssturnaround">Turn Around</button>
+				</div>
+
+				<div class="col-sm-3 section">
+					<h4>Guessing Game</h4>
+					<hr>
+					<div class="panel-group" id="accordian">
+						<div class="bg-primary panel panel-default">
+							<div class="panel-heading bg-primary">
+								<h4 class="panel-title" style="line-height: 20px !important">
+									<a data-toggle="collapse" data-parent="#accordian" href="#collapseTwo">
+										Instructions
+									</a>
+								</h4>
+							</div>
+							<div id="collapseTwo" class="panel-collapse collapse">
+								<div class="panel-body">
+									<button type="button" class="btn btn-info btn-md form-control" id="ggione">Instructions 1</button>
+									<button type="button" class="btn btn-info btn-md form-control" id="ggitwo">Instructions 2</button>
+									<button type="button" class="btn btn-info btn-md form-control" id="ggithree">Instructions 3</button>
+									<button type="button" class="btn btn-info btn-md form-control" id="ggifour">Instructions 4</button>
+									<button type="button" class="btn btn-info btn-md form-control" id="ggifive">Instructions 5</button>
+									<button type="button" class="btn btn-info btn-md form-control" id="ggisix">Instructions 6a</button>
+									<button type="button" class="btn btn-info btn-md form-control" id="ssiseven">Instructions 7</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<button type="button" class="btn btn-info btn-md form-control" id="ggelephant">Elephant</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="ggtiger">Tiger</button>
+					<button type="button" class="btn btn-info btn-md form-control"
+					id="ggkangaroo">Kangaroo</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="ggcrocodile">Crocodile</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="ggcup">Cup</button>
+					<button type="button" class="btn btn-info btn-md form-control"
+					id="ggchair">Chair</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="ggpiano">Piano</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="ggeraser">Eraser</button>
+					<button type="button" class="btn btn-info btn-md form-control"
+					id="ggbanana">Banana</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="ggicecream">Ice Cream</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="ggcookie">Cookie</button>
+					<button type="button" class="btn btn-info btn-md form-control"
+					id="ggdurian">Durian</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="ggspongebob">Spongebob</button>
+					<button type="button" class="btn btn-info btn-md form-control" id="ggspiderman">Spiderman</button>
+					<button type="button" class="btn btn-info btn-md form-control"
+					id="gghulk">Incredible Hulk</button>
+					<button type="button" class="btn btn-success btn-md form-control"
+					id="ggwell">Well Done</button>
+					<button type="button" class="btn btn-success btn-md form-control"
+					id="ggawesome">Awesome</button>
+					<button type="button" class="btn btn-success btn-md form-control"
+					id="ggcool">Cool</button>
+					<button type="button" class="btn btn-success btn-md form-control"
+					id="ggwell">Great</button>
+				</div>
+
+				<div class="col-sm-3 section">
+					<h4>Emotions Game</h4>
+					<hr>
+					<div class="panel-group" id="egaccordian">
+						<div class="bg-primary panel panel-default">
+							<div class="panel-heading bg-primary">
+								<h4 class="panel-title" style="line-height: 20px !important">
+									<a data-toggle="collapse" data-parent="#egaccordian" href="#collapseThree">
+										Instructions
+									</a>
+								</h4>
+							</div>
+							<div id="collapseThree" class="panel-collapse collapse">
+								<div class="panel-body">
+									<button type="button" class="btn btn-info btn-md form-control" id="egione" data-toggle="tooltip" title="hello">Instructions 1</button>
+									<button type="button" class="btn btn-info btn-md form-control" id="egitwo">Instructions 2</button>
+									<button type="button" class="btn btn-info btn-md form-control" id="egithree">Instructions 3</button>
+									<button type="button" class="btn btn-info btn-md form-control" id="egifoura">Instructions 4a</button>
+									<button type="button" class="btn btn-info btn-md form-control" id="egifourb">Instructions 4b</button>
+									<button type="button" class="btn btn-info btn-md form-control" id="egifourc">Instructions 4c</button>
+									<button type="button" class="btn btn-info btn-md form-control" id="egifive">Instructions 5</button>
+									<button type="button" class="btn btn-info btn-md form-control" id="egisix">Instructions 6</button>
+									<button type="button" class="btn btn-info btn-md form-control" id="egiseven">Instructions 7</button>
+									<button type="button" class="btn btn-info btn-md form-control" id="egieight">Instructions 8</button>
+									<button type="button" class="btn btn-info btn-md form-control" id="eginine">Instructions 9</button>
+									<button type="button" class="btn btn-info btn-md form-control" id="egitena">Instructions 10a</button>
+									<button type="button" class="btn btn-info btn-md form-control" id="egitenb">Instructions 10b</button>
+									<button type="button" class="btn btn-info btn-md form-control" id="egitenc">Instructions 10c</button>		
+									<button type="button" class="btn btn-info btn-md form-control" id="ssieleven">Instructions 11</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<button type="button" class="btn btn-info btn-md form-control"
+					id="egsad">Sad</button>
+					<button type="button" class="btn btn-info btn-md form-control"
+					id="eghappy">Happy</button>
+					<button type="button" class="btn btn-info btn-md form-control"
+					id="egdisgust">Disgust</button>
+					<button type="button" class="btn btn-info btn-md form-control"
+					id="egangry">Angry</button>
+					<button type="button" class="btn btn-info btn-md form-control"
+					id="egangrysit">Angry Sit</button>
+					<button type="button" class="btn btn-info btn-md form-control"
+					id="egsurprise">Surprise</button>
+					<button type="button" class="btn btn-success btn-md form-control"
+					id="egwell">Well Done</button>
+					<button type="button" class="btn btn-success btn-md form-control"
+					id="egawesome">Awesome</button>
+					<button type="button" class="btn btn-success btn-md form-control"
+					id="egcool">Cool</button>
+					<button type="button" class="btn btn-success btn-md form-control"
+					id="egwell">Great</button>
+					<button type="button" class="btn btn-success btn-md form-control"
+					id="egwell">Good</button>
+				</div>
+			</div>
+		</div>
+
+
+		<footer>
+			
+		</footer>
+
+		<script type="text/javascript">
+			
+			$(document).ready(function() {
+				resize();
+				//$('#accordian').collapse
+				$(function () {
+      		  		$("[data-toggle='tooltip']").tooltip();
+    			});
+			});
+
+			$(window).scroll(function() {
+				
+			});
+
+			$(window).resize(function() {
+				resize();
+			});
+
+			function resize(){
+				$('#vollabel').css('padding-left', (($('#status-left').width() - 155)/2)+'px');
+				$('#iplabel').css('padding-left', (($('#status-left').width() - 220)/2)+'px');
+				$('#stilabel').css('padding-left', (($('#status-left').width() - 120)/2)+'px');
+			}
+
+			//Volume
+				$('#volume').on('slideStop', function(event){
+					var volume =  document.getElementById('volume').value;
+					$.post('php/functions.php', {id: "vol", content: volume}, function(data) {
+					});
+				});
+
+			//IP
+				$('#setIP').on('click', function() {
+					var ip = document.getElementById("IPText").value;
+					$.post('php/functions.php', {id: "ipa", content: ip}, function(data) {
+						console.log(data+"hi there");
+						if (data == "proxcon") {
+							console.log("Proxy Connected");
+						}else{
+						}
+					});
+				});
+
+			//Stiffness
+				$('#stiffOn').on('click', function() {
+					$.post('php/functions.php', {id: "son"}, function(data) {
+					});
+				});
+
+				$('#stiffOff').on('click', function() {
+					$.post('php/functions.php', {id: "sof"}, function(data) {
+					});
+				});
+
+			//Posture
+				//Squat
+
+					$('#squat').on('click', function() {
+						$.post('php/functions.php', {id: "squ"}, function(data) {
+						});
+					});
+
+				//Stand Up	
+
+					$('#standup').on('click', function() {
+						$.post('php/functions.php', {id: "sta"}, function(data) {
+						});
+					});
+
+				//Shake Head
+				
+					$('#shake').on('click', function() {
+						$.post('php/functions.php', {id: "sha"}, function(data) {
+						});
+					});	
+
+				//Clap
+
+					$('#clap').on('click', function() {
+						$.post('php/functions.php', {id: "cla"}, function(data) {
+						});
+					});	
+
+				//Wave
+				
+					$('#wave').on('click', function() {
+						$.post('php/functions.php', {id: "wav"}, function(data) {
+						});
+					});		
+
+				//Long Nod
+
+					$('#lnod').on('click', function() {
+						$.post('php/functions.php', {id: "nol"}, function(data) {
+						});
+					});	
+
+				//Short Nod
+				
+					$('#snod').on('click', function() {
+						$.post('php/functions.php', {id: "nos"}, function(data) {
+						});
+					});	
+
+				//Think
+
+					$('#think').on('click', function() {
+						$.post('php/functions.php', {id: "thi"}, function(data) {
+						});
+					});	
+
+				//Ask Again
+				
+					$('#askagain').on('click', function() {
+						$.post('php/functions.php', {id: "aag"}, function(data) {
+						});
+					});	
+
+				//Cough
+				
+					$('#cough').on('click', function() {
+						$.post('php/functions.php', {id: "cou"}, function(data) {
+						});
+					});
+
+				//Sneeze
+
+					$('#sneeze').on('click', function() {
+						$.post('php/functions.php', {id: "sne"}, function(data) {
+						});
+					});
+
+				//Sleep
+
+					$('#sleep').on('click', function() {
+						$.post('php/functions.php', {id: "sle"}, function(data) {
+						});
+					});							
+
+			//Dances
+
+				//Hakuna Matata
+
+					$('#hakuna').on('click', function() {
+						$.post('php/functions.php', {id: "dha"}, function(data) {
+						});
+					});
+
+				//Latino
+				
+					$('#latino').on('click', function() {
+						$.post('php/functions.php', {id: "dla"}, function(data) {
+						});
+					});		
+
+				//Jingle Bell Rock					
+					$('#jingle').on('click', function() {
+						$.post('php/functions.php', {id: "dji"}, function(data) {
+						});
+					});
+
+				//Short Funny Dance								
+					$('#shortdance').on('click', function() {
+						$.post('php/functions.php', {id: "dsh"}, function(data) {
+						});
+					});	
+
+				//Gangnam Style
+				
+					$('#gangnam').on('click', function() {
+						$.post('php/functions.php', {id: "dga"}, function(data) {
+						});
+					});
+
+				//It's My Life
+				
+					$('#itsmylife').on('click', function() {
+						$.post('php/functions.php', {id: "dit"}, function(data) {
+						});
+					});	
+
+				//Let It Go
+				
+					$('#letitgo').on('click', function() {
+						$.post('php/functions.php', {id: "dle"}, function(data) {
+						});
+					});
+			//Emotions
+				//Laugh
+					$('#laugh').on('click', function() {
+						$.post('php/functions.php', {id: "ela"}, function(data) {
+						});
+					});
+
+				//Happy
+					$('#happy').on('click', function() {
+						$.post('php/functions.php', {id: "eha"}, function(data) {
+						});
+					});
+
+				//Joyful
+					$('#joyful').on('click', function() {
+						$.post('php/functions.php', {id: "ejo"}, function(data) {
+						});
+					});	
+
+				//Surprise
+					$('#surprise').on('click', function() {
+						$.post('php/functions.php', {id: "esu"}, function(data) {
+						});
+					});
+
+				//Fearful
+					$('#fearful').on('click', function() {
+						$.post('php/functions.php', {id: "efe"}, function(data) {
+						});
+					});
+
+				//Sad
+					$('#sad').on('click', function() {
+						$.post('php/functions.php', {id: "esa"}, function(data) {
+						});
+					});	
+
+				//Disgust
+					//Laugh
+					$('#disgust').on('click', function() {
+						$.post('php/functions.php', {id: "edi"}, function(data) {
+						});
+					});
+
+				//Oh My God
+					$('#amazement').on('click', function() {
+						$.post('php/functions.php', {id: "ema"}, function(data) {
+						});
+					});	
+
+				//Angry
+					$('#angry').on('click', function() {
+						$.post('php/functions.php', {id: "ean"}, function(data) {
+						});
+					});
+
+				//Angry Sit
+					$('#angrysit').on('click', function() {
+						$.post('php/functions.php', {id: "eas"}, function(data) {
+						});
+					});
+
+			//Simon Says
+				//Instruction 1
+					$('#ss1').on('click', function() {
+						$.post('php/functions.php', {id: "ss1"}, function(data) {
+						});
+					});	
+
+				//Instruction 2
+					$('#ss2').on('click', function() {
+						$.post('php/functions.php', {id: "ss2"}, function(data) {
+						});
+					});	
+
+				//Instruction 3
+					$('#ss3').on('click', function() {
+						$.post('php/functions.php', {id: "ss3"}, function(data) {
+						});
+					});	
+					
+				//Instruction 4
+					$('#ss4').on('click', function() {
+						$.post('php/functions.php', {id: "ss4"}, function(data) {
+						});
+					});	
+
+				//Instruction 5
+					$('#ss5').on('click', function() {
+						$.post('php/functions.php', {id: "ss5"}, function(data) {
+						});
+					});	
+
+				//Instruction 6a
+					$('#ss6a').on('click', function() {
+						$.post('php/functions.php', {id: "s6a"}, function(data) {
+						});
+					});	
+
+				//Instruction 6b
+					$('#ss6b').on('click', function() {
+						$.post('php/functions.php', {id: "s6b"}, function(data) {
+						});
+					});				
+
+				//Instruction 7
+					$('#ss7').on('click', function() {
+						$.post('php/functions.php', {id: "ss7"}, function(data) {
+						});
+					});		
+
+				//Instruction 8
+					$('#ss8').on('click', function() {
+						$.post('php/functions.php', {id: "ss8"}, function(data) {
+						});
+					});											
+
+				//Instruction 9
+					$('#ss9').on('click', function() {
+						$.post('php/functions.php', {id: "ss9"}, function(data) {
+						});
+					});		
+
+				//Instruction 10
+					$('#ss10').on('click', function() {
+						$.post('php/functions.php', {id: "s10"}, function(data) {
+						});
+					});		
+
+				//Instruction 11
+					$('#ss11').on('click', function() {
+						$.post('php/functions.php', {id: "s11"}, function(data) {
+						});
+					});	
+
+				//Instruction 12
+					$('#ss12').on('click', function() {
+						$.post('php/functions.php', {id: "s12"}, function(data) {
+						});
+					});	
+
+				//Simon Says Clap
+					$('#ssclap').on('click', function() {
+						$.post('php/functions.php', {id: "scl"}, function(data) {
+						});
+					});
+
+				//Simon Says Wave
+					$('#ssclap').on('click', function() {
+						$.post('php/functions.php', {id: "swa"}, function(data) {
+						});
+					});
+
+				//Simon Says Shake
+					$('#ssshake').on('click', function() {
+						$.post('php/functions.php', {id: "ssh"}, function(data) {
+						});
+					});
+
+				//Simon Says Nod
+					$('#ssnod').on('click', function() {
+						$.post('php/functions.php', {id: "sno"}, function(data) {
+						});
+					});
+
+				//Simon Says Step Left
+					$('#ssstepleft').on('click', function() {
+						$.post('php/functions.php', {id: "ssl"}, function(data) {
+						});
+					});	
+
+				//Simon Says Step Right
+					$('#ssstepright').on('click', function() {
+						$.post('php/functions.php', {id: "ssr"}, function(data) {
+						});
+					});		
+
+				//Simon Says Squat
+					$('#sssquat').on('click', function() {
+						$.post('php/functions.php', {id: "sss"}, function(data) {
+						});
+					});
+
+				//Simon Says Turn Left
+					$('#ssturnleft').on('click', function() {
+						$.post('php/functions.php', {id: "stl"}, function(data) {
+						});
+					});	
+
+				//Simon Says turn Right
+					$('#ssturnright').on('click', function() {
+						$.post('php/functions.php', {id: "str"}, function(data) {
+						});
+					});
+
+				//Simon Says Turn Around
+					$('#ssturnaround').on('click', function() {
+						$.post('php/functions.php', {id: "sst"}, function(data) {
+						});
+					});	
+
+		</script>
+
+	</body>
+
+</html>

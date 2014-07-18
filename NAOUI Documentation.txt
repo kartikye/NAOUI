@@ -1,0 +1,260 @@
+########   Settings   ########
+
+	IP Address
+		Format: 
+			ipa***.***.*.***
+			WHERE ***.***.*.*** is ROBOT IP
+
+	Stiffness On
+		Format:
+			son
+
+	Stiffness Off
+		Format:
+			sof
+
+	Volume
+		Format:
+			vol***
+			WHERE 0 <= *** <= 100
+			AND *** is of type INT
+
+########   Postures   ########
+
+	Squat
+		Format:
+			squ
+
+	Stand Up
+		Format:
+			sta
+
+	Shake Head
+		Format:
+			sha
+	Clap	
+		Format:
+			cla
+	Wave
+		Format:	
+			wav
+
+	Long Nod
+		Format:	
+			nol
+
+	Short Nod
+		Format:	
+			nos
+
+	Think
+		Format:	
+			thi
+    
+    Ask Again
+		Format:	
+			aag
+	
+	Cough		
+		Format:	
+			cou
+	
+	Sneeze
+		Format:	
+			sne
+	
+	Sleep
+		Format:	
+			sle
+	
+########   Dances   ########	
+
+	Hakuna Matata
+		Format:	
+			dha
+	
+	Latino
+		Format:	
+			dla
+		
+	Short Funny Dance	
+		Format:	
+			dsh
+	
+	Gangnam Style	
+		Format:	
+			dga
+		
+	It's My Life	
+		Format:	
+			dit
+		
+	Let It Go	
+		Format:	
+			dle
+		
+########   Emotions   ########
+	
+	Laugh
+		Format:	
+			ela
+	
+	Happy	
+		Format:	
+			eha
+	
+	Joyful	
+		Format:	
+			ejo
+	
+	Surprise	
+		Format:	
+			esu
+	
+	Fearful	
+		Format:	
+			efe
+		
+	Sad	
+		Format:	
+			esa
+		
+	Disgust	
+		Format:	
+			edi
+		
+	Amazement
+		Format:	
+			eam
+
+	Angry		
+		Format:	
+			ean
+	
+	Angry Sit	
+		Format:	
+			eas
+
+########   Simon Says   ########		
+
+	########   Simon Says Instruction   ########
+
+		Instrcution 1
+			Format:	
+				ss1
+			Output: 
+				Now we're going to play Simon Says. It is a copying game.
+
+		Instrcution 2	
+			Format:	
+				ss2
+			Output: 
+				In this game, I'm going to say 'Simon says follow by an action'. You only do the same action after I say Simon Says.
+
+		Instrcution 3	
+			Format:	
+				ss3
+			Output:
+				For example, if I say 'Simon Says shake your head', then you have to shake your head. Like this.
+
+		Instrcution 4   
+		    Format:
+				ss4
+			Output:
+				Lets try!
+
+		Instrcution 5	
+			Format:	
+				ss5
+			Output:
+				'Simon Says wave you1. Now we're going to play Simon Says. It is a copying game.
+
+		Instrcution 6a	
+			Format:	
+				s6a
+			Output:
+				That's right!
+
+		Instrcution 6b	
+			Format:	
+				s6b
+			Output:
+				No, when I say 'Simon says, wave your hands' You do this.
+
+		Instrcution 7	
+			Format:	
+				ss7
+			Output:
+				If I did not say 'Simon Says' before the action, then you must stay still. Do not move.
+
+		Instrcution 8	
+			Format:	
+				ss8
+			Output:
+				Do you understand the game?
+
+		Instrcution 9	
+			Format:	
+				ss9
+			Output:
+				Let's start!
+
+		Instrcution 10	
+			Format:	
+				s10
+			Output:
+				If I say 'clap your hands'. What do you do?
+
+		Instrcution 11	
+			Format:	
+				s11
+			Output:
+				No, I did not say 'Simon says', so you should not move.
+
+		Instrcution 12	
+			Format:	
+				s12
+			Output:
+				Lets try another one. Ready?
+	
+	########   Simon Says Actions   ########
+
+		Simon Says Clap	
+			Format:	
+				scl
+			
+		Simon Says Wave
+			Format:	
+				swa
+			
+		Simon Says Shake	
+			Format:	
+				ssh
+			
+		Simon Says Nod
+			Format:	
+				sno
+			
+		Simon Says Step Left
+			Format:	
+				ssl
+			
+		Simon Says Step Right
+			Format:	
+				ssr
+			
+		Simon Says Squat
+			Format:	
+				sss
+			
+		Simon Says Turn Left
+			Format:	
+				stl
+			
+		Simon Says Turn Right
+			Format:	
+				str
+			
+		Simon Says Turn Around
+			Format:	
+				sst
